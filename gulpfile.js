@@ -8,6 +8,9 @@ const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const del = require('del');
+const rollup = require('gulp-better-rollup');
+const resolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
 
 // Compile SCSS
 gulp.task('scss', () => {
@@ -21,12 +24,19 @@ gulp.task('scss', () => {
 
 // Compile JavaScript
 gulp.task('js', () => {
-	return gulp.src(['src/js/**/*.js', '!src/js/**/*.min.js'])
+	return gulp.src('src/js/app.js')
 		.pipe(plumber())
+		.pipe(rollup({
+			plugins: [
+				resolve(),
+				commonjs()
+			]
+		}, {
+			format: 'iife'
+		}))
 		.pipe(babel({
 			presets: ['@babel/preset-env']
 		}))
-		.pipe(concat('main.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('dist/assets/js/'))
 		.pipe(browserSync.stream());

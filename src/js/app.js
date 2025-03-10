@@ -1,4 +1,5 @@
 import { MountainVisualization } from './visualization.js';
+import * as d3 from 'd3';
 
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* particlesJS configuration */
-  particlesJS('particles-js', {
+  window.particlesJS('particles-js', {
     "particles": {
       "number": {
         "value": 50,
