@@ -1,4 +1,4 @@
-import { MountainMap } from './map.js';
+import { MountainVisualization } from './visualization.js';
 
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "retina_detect": true
   });
 
-  // Initialize map
-  const mountainMap = new MountainMap();
-  mountainMap.init();
+  // Initialize visualization
+  const mountainViz = new MountainVisualization();
+  mountainViz.init();
 }, false);

@@ -2,53 +2,54 @@ import { mountains } from './mountains.js';
 
 export class MountainMap {
     constructor() {
-        this.mapboxToken = 'pk.your_actual_mapbox_token_here'; // Replace this
         this.map = null;
         this.markers = [];
         this.activeMarker = null;
     }
 
     init() {
-        mapboxgl.accessToken = this.mapboxToken;
-        
-        this.map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/outdoors-v12',
-            center: [85, 28], // Centered on Himalayan region
-            zoom: 5
-        });
+        // Initialize Leaflet map
+        this.map = L.map('map').setView([28, 85], 5);
 
-        this.map.addControl(new mapboxgl.NavigationControl());
-        
-        this.map.on('load', () => {
-            this.addMarkers();
-        });
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(this.map);
+
+        // Add terrain layer (optional)
+        L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenTopoMap contributors'
+        }).addTo(this.map);
+
+        this.addMarkers();
     }
 
     addMarkers() {
         mountains.forEach(mountain => {
-            // Create marker element
-            const el = document.createElement('div');
-            el.className = 'mountain-marker';
-            
-            // Create popup
-            const popup = new mapboxgl.Popup({ offset: 25 })
-                .setHTML(`<h3>${mountain.name}</h3><p>${mountain.height}m</p>`);
+            // Create custom icon
+            const icon = L.divIcon({
+                className: 'mountain-marker',
+                html: `<div class="marker-inner"></div>`,
+                iconSize: [20, 20]
+            });
 
             // Create marker
-            const marker = new mapboxgl.Marker(el)
-                .setLngLat(mountain.coordinates)
-                .setPopup(popup)
-                .addTo(this.map);
+            const marker = L.marker(mountain.coordinates.reverse(), {
+                icon: icon
+            }).addTo(this.map);
+
+            // Create popup
+            const popupContent = `<h3>${mountain.name}</h3><p>${mountain.height}m</p>`;
+            marker.bindPopup(popupContent);
 
             // Add click event
-            el.addEventListener('click', () => {
+            marker.on('click', () => {
                 this.showMountainInfo(mountain);
                 if (this.activeMarker) {
                     this.activeMarker.classList.remove('active');
                 }
-                el.classList.add('active');
-                this.activeMarker = el;
+                marker.getElement().querySelector('.marker-inner').classList.add('active');
+                this.activeMarker = marker.getElement().querySelector('.marker-inner');
             });
 
             this.markers.push(marker);

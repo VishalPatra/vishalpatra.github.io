@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8000ers Explorer</title>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -14,7 +13,7 @@
         <nav>
             <ul>
                 <li><a href="#home" data-scroll>Home</a></li>
-                <li><a href="#map" data-scroll>8000ers Map</a></li>
+                <li><a href="#visualization" data-scroll>8000ers</a></li>
                 <li><a href="#about" data-scroll>About</a></li>
             </ul>
         </nav>
@@ -25,18 +24,18 @@
         <section id="home" class="hero">
             <div class="container">
                 <h1>8000ers Explorer</h1>
-                <p class="tagline">Interactive Map of the World's Highest Peaks</p>
+                <p class="tagline">Visual Journey Through the World's Highest Peaks</p>
                 <div class="cta-buttons">
-                    <a href="#map" class="btn primary" data-scroll>Explore Map</a>
+                    <a href="#visualization" class="btn primary" data-scroll>Explore Peaks</a>
                     <a href="#about" class="btn secondary" data-scroll>Learn More</a>
                 </div>
             </div>
         </section>
 
-        <!-- Map Section -->
-        <section id="map" class="map-section">
-            <div class="map-container">
-                <div id="map"></div>
+        <!-- Visualization Section -->
+        <section id="visualization" class="visualization-section">
+            <div class="viz-container">
+                <div id="mountain-viz"></div>
                 <div id="mountain-info" class="mountain-info">
                     <h3>Select a mountain</h3>
                     <div class="info-content"></div>
@@ -59,7 +58,7 @@
         </div>
     </footer>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="assets/js/vendor/particles.js"></script>
     <script src="assets/js/vendor/sweet-scroll.min.js"></script>
     <script src="assets/js/main.js"></script>
