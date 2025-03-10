@@ -1,6 +1,12 @@
-_site
-.sass-cache
-node_modules/
+# Build output
 assets/
+
+# Dependencies
+node_modules/
+
+# Cache files
+.sass-cache/
 .DS_Store
+
+# Logs
 *.log

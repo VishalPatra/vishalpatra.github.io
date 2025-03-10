@@ -2,7 +2,7 @@ import { mountains } from './mountains.js';
 
 export class MountainMap {
     constructor() {
-        this.mapboxToken = 'YOUR_MAPBOX_TOKEN'; // Replace with your token
+        this.mapboxToken = 'pk.your_actual_mapbox_token_here'; // Replace this
         this.map = null;
         this.markers = [];
         this.activeMarker = null;

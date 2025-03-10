@@ -1,17 +1,12 @@
 {
-  "name": "vishalpatra-portfolio",
+  "name": "8000ers-explorer",
   "version": "1.0.0",
-  "description": "Personal portfolio website hosted on GitHub Pages",
+  "description": "Interactive Map of the World's Highest Peaks",
   "main": "index.js",
-  "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
-  },
   "scripts": {
     "dev": "gulp",
     "build": "gulp build",
-    "start": "gulp serve",
-    "clean": "gulp clean"
+    "deploy": "gulp build && gh-pages -d ."
   },
   "author": "Vishal Patra",
   "license": "ISC",
@@ -28,5 +23,8 @@
     "particles.js": "^2.0.0",
     "sass": "^1.69.5",
     "sweet-scroll": "^4.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
