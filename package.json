@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Personal portfolio website hosted on GitHub Pages",
   "main": "index.js",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "gulp",
     "build": "gulp build",
@@ -12,15 +16,16 @@
   "author": "Vishal Patra",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0",
+    "browser-sync": "^2.29.3",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
-    "gulp-csso": "^3.0.1",
-    "gulp-imagemin": "^5.0.3",
+    "gulp-csso": "^4.0.1",
+    "gulp-imagemin": "^7.1.0",
     "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
     "particles.js": "^2.0.0",
+    "sass": "^1.69.5",
     "sweet-scroll": "^4.0.0"
   }
 }
