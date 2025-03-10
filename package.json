@@ -9,9 +9,9 @@
   },
   "scripts": {
     "dev": "gulp",
-    "prebuild": "rm -rf assets",
+    "prebuild": "rm -rf dist",
     "build": "gulp build",
-    "deploy": "gulp build && gh-pages -d ."
+    "deploy": "gulp build && gh-pages -d dist"
   },
   "author": "Vishal Patra",
   "license": "ISC",

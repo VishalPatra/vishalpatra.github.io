@@ -15,7 +15,7 @@ gulp.task('scss', () => {
 		.pipe(plumber())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(csso())
-		.pipe(gulp.dest('assets/css/'))
+		.pipe(gulp.dest('dist/assets/css/'))
 		.pipe(browserSync.stream());
 });
 
@@ -28,7 +28,7 @@ gulp.task('js', () => {
 		}))
 		.pipe(concat('main.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('assets/js/'))
+		.pipe(gulp.dest('dist/assets/js/'))
 		.pipe(browserSync.stream());
 });
 
@@ -39,7 +39,7 @@ gulp.task('vendor', () => {
 		'node_modules/sweet-scroll/sweet-scroll.min.js',
 		'node_modules/d3/dist/d3.min.js'
 	], { allowEmpty: true })
-	.pipe(gulp.dest('assets/js/vendor/'));
+	.pipe(gulp.dest('dist/assets/js/vendor/'));
 });
 
 // Optimize Images
@@ -56,31 +56,31 @@ gulp.task('images', () => {
 				]
 			})
 		]))
-		.pipe(gulp.dest('assets/img'));
+		.pipe(gulp.dest('dist/assets/img'));
 });
 
 // Copy HTML
 gulp.task('html', () => {
 	return gulp.src('src/*.html')
-		.pipe(gulp.dest('./'))
+		.pipe(gulp.dest('dist/'))
 		.pipe(browserSync.stream());
 });
 
 // Watch files
 gulp.task('serve', () => {
 	browserSync.init({
-		server: "./"
+		server: "./dist"
 	});
 
 	gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
 	gulp.watch('src/js/**/*.js', gulp.series('js'));
 	gulp.watch('src/*.html', gulp.series('html'));
-	gulp.watch('*.html').on('change', browserSync.reload);
+	gulp.watch('dist/*.html').on('change', browserSync.reload);
 });
 
-// Clean assets
+// Clean dist
 gulp.task('clean', () => {
-	return del(['assets/**/*']);
+	return del(['dist/**/*']);
 });
 
 // Build task
