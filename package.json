@@ -11,12 +11,13 @@
     "dev": "gulp",
     "build": "gulp build",
     "start": "gulp serve",
-    "clean": "rm -rf assets/css assets/js"
+    "clean": "gulp clean"
   },
   "author": "Vishal Patra",
   "license": "ISC",
   "dependencies": {
     "browser-sync": "^2.29.3",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^4.0.1",

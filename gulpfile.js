@@ -6,6 +6,7 @@ const concat = require('gulp-concat');
 const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
+const del = require('del');
 
 // Compile SCSS
 gulp.task('scss', () => {
@@ -53,6 +54,13 @@ gulp.task('images', () => {
 		.pipe(gulp.dest('assets/img'));
 });
 
+// Copy HTML
+gulp.task('html', () => {
+	return gulp.src('src/*.html')
+		.pipe(gulp.dest('./'))
+		.pipe(browserSync.stream());
+});
+
 // Watch files
 gulp.task('serve', () => {
 	browserSync.init({
@@ -61,11 +69,20 @@ gulp.task('serve', () => {
 
 	gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
 	gulp.watch('src/js/**/*.js', gulp.series('js'));
+	gulp.watch('src/*.html', gulp.series('html'));
 	gulp.watch('*.html').on('change', browserSync.reload);
 });
 
+// Clean assets
+gulp.task('clean', () => {
+	return del(['assets/**/*']);
+});
+
 // Build task
-gulp.task('build', gulp.parallel('scss', 'js', 'vendor', 'images'));
+gulp.task('build', gulp.series(
+	'clean',
+	gulp.parallel('scss', 'js', 'vendor', 'images', 'html')
+));
 
 // Default task
 gulp.task('default', gulp.series('build', 'serve'));
