@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const csso = require('gulp-csso');
 const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
@@ -22,6 +23,9 @@ gulp.task('scss', () => {
 gulp.task('js', () => {
 	return gulp.src(['src/js/**/*.js', '!src/js/**/*.min.js'])
 		.pipe(plumber())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
 		.pipe(concat('main.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('assets/js/'))
@@ -32,7 +36,8 @@ gulp.task('js', () => {
 gulp.task('vendor', () => {
 	return gulp.src([
 		'node_modules/particles.js/particles.js',
-		'node_modules/sweet-scroll/sweet-scroll.min.js'
+		'node_modules/sweet-scroll/sweet-scroll.min.js',
+		'node_modules/d3/dist/d3.min.js'
 	])
 	.pipe(gulp.dest('assets/js/vendor/'));
 });
