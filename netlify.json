@@ -1,6 +1,6 @@
 {
   "build": {
-    "base": "vishalpatra.github.io/vishalpatra.github.io",
+    "base": ".",
     "command": "npm run build",
     "publish": ".",
     "ignore": "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./",
