@@ -38,7 +38,7 @@ gulp.task('vendor', () => {
 		'node_modules/particles.js/particles.js',
 		'node_modules/sweet-scroll/sweet-scroll.min.js',
 		'node_modules/d3/dist/d3.min.js'
-	])
+	], { allowEmpty: true })
 	.pipe(gulp.dest('assets/js/vendor/'));
 });
 
