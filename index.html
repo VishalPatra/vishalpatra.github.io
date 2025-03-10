@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishal Patra - Portfolio</title>
+    <title>8000ers Explorer - Vishal Patra</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -13,8 +14,8 @@
         <nav>
             <ul>
                 <li><a href="#home" data-scroll>Home</a></li>
+                <li><a href="#map" data-scroll>8000ers Map</a></li>
                 <li><a href="#about" data-scroll>About</a></li>
-                <li><a href="#blog" data-scroll>Blog</a></li>
             </ul>
         </nav>
     </header>
@@ -23,11 +24,22 @@
         <!-- Home Section -->
         <section id="home" class="hero">
             <div class="container">
-                <h1>Vishal Patra</h1>
-                <p class="tagline">Software Developer & Tech Enthusiast</p>
+                <h1>8000ers Explorer</h1>
+                <p class="tagline">Interactive Map of the World's Highest Peaks</p>
                 <div class="cta-buttons">
-                    <a href="#about" class="btn primary" data-scroll>About Me</a>
-                    <a href="#blog" class="btn secondary" data-scroll>Read Blog</a>
+                    <a href="#map" class="btn primary" data-scroll>Explore Map</a>
+                    <a href="#about" class="btn secondary" data-scroll>Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map" class="map-section">
+            <div class="map-container">
+                <div id="map"></div>
+                <div id="mountain-info" class="mountain-info">
+                    <h3>Select a mountain</h3>
+                    <div class="info-content"></div>
                 </div>
             </div>
         </section>
@@ -35,35 +47,8 @@
         <!-- About Section -->
         <section id="about" class="about">
             <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <div class="profile">
-                        <img src="assets/img/profile.jpg" alt="Vishal Patra" class="profile-img">
-                        <div class="social-links">
-                            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-                            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-                        </div>
-                    </div>
-                    <div class="bio">
-                        <p>Your bio goes here...</p>
-                        <div class="skills">
-                            <h3>Skills</h3>
-                            <ul class="skill-list">
-                                <!-- Add your skills here -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Section -->
-        <section id="blog" class="blog">
-            <div class="container">
-                <h2>Latest Posts</h2>
-                <div class="blog-grid">
-                    <!-- Blog posts will be dynamically loaded here -->
-                </div>
+                <h2>About This Project</h2>
+                <p>An interactive exploration of the fourteen 8000-meter peaks in the world.</p>
             </div>
         </section>
     </main>
@@ -74,6 +59,7 @@
         </div>
     </footer>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
     <script src="assets/js/vendor/particles.js"></script>
     <script src="assets/js/vendor/sweet-scroll.min.js"></script>
     <script src="assets/js/main.js"></script>
