@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
   publish = "."
+  base = "vishalpatra.github.io/vishalpatra.github.io"
 
 [build.environment]
   NODE_VERSION = "16"

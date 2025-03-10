@@ -1,5 +1,6 @@
 # Build output
-assets/
+assets/*
+!assets/.gitkeep
 
 # Dependencies
 node_modules/

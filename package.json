@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "gulp",
+    "prebuild": "rm -rf assets",
     "build": "gulp build",
     "deploy": "gulp build && gh-pages -d ."
   },
