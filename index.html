@@ -1,3 +1,81 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Patra - Portfolio</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" data-scroll>Home</a></li>
+                <li><a href="#about" data-scroll>About</a></li>
+                <li><a href="#blog" data-scroll>Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Vishal Patra</h1>
+                <p class="tagline">Software Developer & Tech Enthusiast</p>
+                <div class="cta-buttons">
+                    <a href="#about" class="btn primary" data-scroll>About Me</a>
+                    <a href="#blog" class="btn secondary" data-scroll>Read Blog</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="profile">
+                        <img src="assets/img/profile.jpg" alt="Vishal Patra" class="profile-img">
+                        <div class="social-links">
+                            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="bio">
+                        <p>Your bio goes here...</p>
+                        <div class="skills">
+                            <h3>Skills</h3>
+                            <ul class="skill-list">
+                                <!-- Add your skills here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog">
+            <div class="container">
+                <h2>Latest Posts</h2>
+                <div class="blog-grid">
+                    <!-- Blog posts will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Vishal Patra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="node_modules/particles.js/particles.js"></script>
+    <script src="node_modules/sweet-scroll/sweet-scroll.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

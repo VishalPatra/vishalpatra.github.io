@@ -1,12 +1,15 @@
 {
-  "name": "particle",
+  "name": "vishalpatra-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal portfolio website hosted on GitHub Pages",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp"
+    "dev": "gulp",
+    "build": "gulp build",
+    "start": "gulp serve",
+    "clean": "rm -rf assets/css assets/js"
   },
-  "author": "Nathan Randecker",
+  "author": "Vishal Patra",
   "license": "ISC",
   "dependencies": {
     "browser-sync": "^2.26.3",
@@ -16,6 +19,8 @@
     "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.1",
+    "particles.js": "^2.0.0",
+    "sweet-scroll": "^4.0.0"
   }
 }
