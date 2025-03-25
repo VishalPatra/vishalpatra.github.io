@@ -59,11 +59,13 @@
 .calculator-wrapper {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     min-height: 100vh;
     padding: 90px 15px 30px;
     position: relative;
     z-index: 5;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .calculator-box {
