@@ -1,6 +1,6 @@
 # 3D Print Cost Calculator
 
-A simple, responsive web-based calculator for estimating the cost of 3D printing projects. This tool helps makers and 3D printing enthusiasts calculate the total cost of a print job by considering material costs, electricity usage, failure rates, and labor costs.
+A sleek, responsive web-based calculator for estimating the cost of 3D printing projects. This professional tool helps makers and 3D printing enthusiasts calculate the total cost of a print job by considering material costs, electricity usage, failure rates, and labor costs.
 
 ![3D Print Cost Calculator](./particle.jpg)
 
@@ -10,18 +10,24 @@ A simple, responsive web-based calculator for estimating the cost of 3D printing
 - **Electricity Cost Calculation**: Factor in power consumption and electricity rates
 - **Risk Assessment**: Include potential failure rates in cost estimation
 - **Labor Costs**: Add optional labor costs based on print time
-- **Responsive Design**: Works on mobile, tablet, and desktop devices
-- **Particle.js Background**: Beautiful animated particle background
+- **Dark/Light Theme**: Toggle between light and dark mode for comfortable viewing in any environment
+- **Interactive Particles**: Beautiful animated particle background that changes colors on click
+- **Mobile Responsive**: Fully responsive design that works on all devices (mobile, tablet, desktop)
 - **Preset Filament Types**: Quick selection of common filament types (PLA, ABS, PETG, TPU)
+- **Data Persistence**: Theme preferences saved between sessions
+- **Keyboard Navigation**: Full keyboard support for accessibility
+- **One-Page Design**: Calculator fits within a single viewport on desktop for better UX
 
 ## Technologies Used
 
-- Jekyll
-- HTML5/CSS3
-- JavaScript
-- Bootstrap 5
-- Particle.js
-- SASS
+- Jekyll for static site generation
+- HTML5/CSS3 with modern layout techniques
+- JavaScript ES6+ with DOM manipulation
+- Bootstrap 5 for responsive grid layout
+- Particle.js for interactive background
+- CSS Variables for theme switching
+- Local Storage API for user preference persistence
+- Responsive design with mobile-first approach
 
 ## Setup and Installation
 
@@ -49,6 +55,7 @@ This site is designed to be hosted on GitHub Pages:
 - Edit `_config.yml` to update site metadata
 - Modify CSS in `assets/css/calculator.css` for styling changes
 - Update calculator logic in `assets/js/calculator.js`
+- Adjust particle effects in `assets/js/main.js`
 
 ## License
 

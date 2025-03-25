@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add a visual feedback animation to the button
         this.classList.add('clicked');
         setTimeout(() => this.classList.remove('clicked'), 200);
+        
+        // Show a ripple effect on the button
+        createRipple(this, event);
     });
     
     // Add click event for "Reset" button
@@ -83,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add a visual feedback animation to the button
         this.classList.add('clicked');
         setTimeout(() => this.classList.remove('clicked'), 200);
+        
+        // Show a ripple effect on the button
+        createRipple(this, event);
     });
     
     // Handle orientation changes
@@ -95,6 +101,40 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateCost();
     updateLayout();
 });
+
+// Create a ripple effect for buttons
+function createRipple(button, e) {
+    const rect = button.getBoundingClientRect();
+    const circle = document.createElement('span');
+    
+    const diameter = Math.max(rect.width, rect.height);
+    const radius = diameter / 2;
+    
+    // Position relative to button
+    let x = e ? e.clientX - rect.left - radius : rect.width / 2;
+    let y = e ? e.clientY - rect.top - radius : rect.height / 2;
+    
+    // Create the ripple effect
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${x}px`;
+    circle.style.top = `${y}px`;
+    circle.classList.add('ripple');
+    
+    // Remove existing ripples
+    const ripple = button.querySelector('.ripple');
+    if (ripple) {
+        ripple.remove();
+    }
+    
+    button.appendChild(circle);
+    
+    // Remove the ripple after animation
+    setTimeout(() => {
+        if (circle) {
+            circle.remove();
+        }
+    }, 600);
+}
 
 function updateLayout() {
     // Adjust UI based on viewport height
@@ -133,12 +173,14 @@ function resetForm() {
     document.getElementById('failureRate').value = 10;
     document.getElementById('laborCost').value = 0;
     
-    // Reset result displays
-    document.getElementById('materialCost').textContent = '$0.00';
-    document.getElementById('powerCost').textContent = '$0.00';
-    document.getElementById('riskCost').textContent = '$0.00';
-    document.getElementById('laborCostResult').textContent = '$0.00';
-    document.getElementById('totalCost').textContent = '$0.00';
+    // Reset result displays with fade effect
+    const resultElements = ['materialCost', 'powerCost', 'riskCost', 'laborCostResult', 'totalCost'];
+    resultElements.forEach(id => {
+        const element = document.getElementById(id);
+        element.classList.add('update-animation');
+        element.textContent = '$0.00';
+        setTimeout(() => element.classList.remove('update-animation'), 400);
+    });
     
     // Focus on the first input field
     document.getElementById('filamentType').focus();
