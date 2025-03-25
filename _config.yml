@@ -1,17 +1,15 @@
 # Site settings
-title: A blog about lorem ipsum dolor sit amet
-description: A blog about lorem ipsum dolor sit amet
-# baseurl: "/particle" # the subpath of your site, e.g. /blog
-# url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+title: 3D Print Cost Calculator
+description: A simple and efficient calculator for estimating 3D printing costs
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://vishalpatra.github.io" # the base hostname & protocol for your site
 
 # User settings
-username: Vishalpatra
-user_description: Bicycle rights irony actually neutra typewriter lyft. Man bun taxidermy put a bird on it, umami yr ramps pop-up ugh bushwick chia lo-fi. Occupy bitters pour-over snackwave you probably haven't heard of them small batch. Cornhole mustache man bun letterpress echo park VHS.
-user_title: Front-End Developer
-email: vishalpatra@outlook.com
-twitter_username: notvishalpatra
-github_username:  Vishalpatra
-gplus_username:  Vishalpatra
+username: 3D Print Calculator
+user_description: Calculate accurate costs for your 3D printing projects including material, electricity, and labor costs.
+user_title: 3D Print Cost Estimator
+email: your-email@domain.com
+github_username: vishalpatra
 
 # Google-analytics
 google-analytics:
