@@ -1,21 +1,14 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const csso = require('gulp-csso');
-const uglify = require('gulp-uglify');
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
-const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const del = require('del');
-const rollup = require('gulp-better-rollup');
-const resolve = require('@rollup/plugin-node-resolve');
-const commonjs = require('@rollup/plugin-commonjs');
+const webpack = require('webpack-stream');
 
 // Compile SCSS
 gulp.task('scss', () => {
 	return gulp.src('src/scss/**/*.scss')
-		.pipe(plumber())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(csso())
 		.pipe(gulp.dest('dist/assets/css/'))
@@ -25,19 +18,26 @@ gulp.task('scss', () => {
 // Compile JavaScript
 gulp.task('js', () => {
 	return gulp.src('src/js/app.js')
-		.pipe(plumber())
-		.pipe(rollup({
-			plugins: [
-				resolve(),
-				commonjs()
-			]
-		}, {
-			format: 'iife'
+		.pipe(webpack({
+			mode: 'production',
+			output: {
+				filename: 'app.js'
+			},
+			module: {
+				rules: [
+					{
+						test: /\.js$/,
+						exclude: /node_modules/,
+						use: {
+							loader: 'babel-loader',
+							options: {
+								presets: ['@babel/preset-env']
+							}
+						}
+					}
+				]
+			}
 		}))
-		.pipe(babel({
-			presets: ['@babel/preset-env']
-		}))
-		.pipe(uglify())
 		.pipe(gulp.dest('dist/assets/js/'))
 		.pipe(browserSync.stream());
 });
