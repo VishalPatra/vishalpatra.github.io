@@ -1,12 +1,14 @@
+/* Mobile-first base styles */
 .header {
     z-index: 10;
     text-align: center;
     color: #FFF;
     position: absolute;
-    top: 50px;
+    top: 20px;
     left: 0;
     right: 0;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 .header h1 {
@@ -14,7 +16,7 @@
 }
 
 .header .site-title {
-    font-size: 50px;
+    font-size: 32px;
     display: block;
     line-height: 1.1;
     color: #FFF;
@@ -22,7 +24,7 @@
 }
 
 .header .site-description {
-    font-size: 28px;
+    font-size: 18px;
     display: block;
     line-height: 1.1;
     color: #FFF;
@@ -31,16 +33,16 @@
 }
 
 .header .header-icons {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .header .icon {
     text-align: center;
     color: #FFF;
-    width: 25px;
-    height: 25px;
-    font-size: 25px;
-    padding: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    padding: 8px;
     margin: 5px;
     border-radius: 50%;
     border: 2px solid #FFF;
@@ -57,20 +59,20 @@
 .calculator-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
-    padding: 150px 20px 40px;
+    padding: 90px 15px 30px;
     position: relative;
     z-index: 5;
 }
 
 .calculator-box {
     background: rgba(255, 255, 255, 0.9);
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-width: 650px;
+    max-width: 400px;
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeIn 1.2s ease-out;
     margin: 0 auto;
@@ -80,25 +82,19 @@
     -webkit-backdrop-filter: blur(10px);
 }
 
-.calculator-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-    background: rgba(255, 255, 255, 0.95);
-}
-
 .calculator-box h2 {
     text-align: center;
     color: #212529;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
 .section-group {
     background: rgba(248, 249, 250, 0.8);
-    padding: 1.5rem;
+    padding: 1.2rem;
     border-radius: 12px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     transition: all 0.2s;
     border: 1px solid rgba(0,0,0,0.05);
     backdrop-filter: blur(5px);
@@ -114,13 +110,14 @@
 .section-group h3 {
     color: #212529;
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
+    font-weight: 600;
 }
 
 .input-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .input-group label {
@@ -128,17 +125,34 @@
     margin-bottom: 0.5rem;
     color: #495057;
     font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .input-group select, 
 .input-group input {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.7rem;
     border: 2px solid #e9ecef;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.2s;
     background-color: rgba(255, 255, 255, 0.9);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Fix for iOS input styling */
+.input-group input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.input-group select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="292.4" height="292.4"><path fill="%23495057" d="M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 0.65rem auto;
+    padding-right: 2rem;
 }
 
 .input-group select:hover, 
@@ -174,8 +188,9 @@
 
 .input-with-unit .unit {
     color: #6c757d;
-    font-size: 0.9rem;
-    min-width: 45px;
+    font-size: 0.85rem;
+    min-width: 30px;
+    text-align: left;
 }
 
 .time-inputs {
@@ -195,16 +210,17 @@
 
 .calculate-btn {
     width: 100%;
-    padding: 1.1rem;
+    padding: 0.9rem;
     background: linear-gradient(to right, #228be6, #4dabf7);
     color: white;
     border: none;
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     box-shadow: 0 4px 10px rgba(34, 139, 230, 0.3);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .calculate-btn:hover {
@@ -230,8 +246,8 @@
 }
 
 .results {
-    margin-top: 2rem;
-    padding: 1.8rem;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
     background: rgba(248, 249, 250, 0.8);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -248,19 +264,21 @@
     color: #212529;
     margin-bottom: 1.2rem;
     text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .cost-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.8rem;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
 }
 
 .cost-item {
     display: flex;
     justify-content: space-between;
-    padding: 0.8rem 1rem;
+    padding: 0.7rem 1rem;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
@@ -275,6 +293,7 @@
 .cost-item label {
     color: #495057;
     font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .cost-item span {
@@ -285,11 +304,11 @@
 .total-cost {
     display: flex;
     justify-content: space-between;
-    padding: 1.2rem;
+    padding: 1rem;
     background: linear-gradient(to right, #228be6, #4dabf7);
     color: white;
     border-radius: 10px;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(34, 139, 230, 0.25);
 }
@@ -311,11 +330,12 @@
 
 .footer {
     background: rgba(0, 0, 0, 0.7);
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
     color: white;
     position: relative;
     z-index: 10;
+    font-size: 0.9rem;
 }
 
 .footer p {
@@ -333,7 +353,12 @@
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+/* Tablet and up */
+@media (min-width: 576px) {
+    .header {
+        top: 30px;
+    }
+    
     .header .site-title {
         font-size: 38px;
     }
@@ -342,45 +367,138 @@
         font-size: 22px;
     }
     
-    .calculator-box {
-        padding: 1.5rem;
-    }
-    
-    .section-group {
-        padding: 1.2rem;
-    }
-    
     .calculator-wrapper {
-        padding-top: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header .site-title {
-        font-size: 30px;
-    }
-    
-    .header .site-description {
-        font-size: 18px;
+        padding-top: 110px;
     }
     
     .calculator-box {
-        padding: 1rem;
-    }
-
-    .section-group {
-        padding: 1rem;
-    }
-
-    .cost-grid {
-        grid-template-columns: 1fr;
+        padding: 1.8rem;
+        max-width: 480px;
     }
     
     .calculator-box h2 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
+    }
+    
+    .section-group {
+        padding: 1.4rem;
+    }
+    
+    .section-group h3 {
+        font-size: 1.2rem;
+    }
+    
+    .cost-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .input-group label {
+        font-size: 1rem;
+    }
+}
+
+/* Desktop and up */
+@media (min-width: 992px) {
+    .header {
+        top: 40px;
+    }
+    
+    .header .site-title {
+        font-size: 42px;
+    }
+    
+    .header .site-description {
+        font-size: 24px;
     }
     
     .calculator-wrapper {
-        padding-top: 100px;
+        padding-top: 130px;
+    }
+    
+    .calculator-box {
+        padding: 2rem;
+        max-width: 550px;
+    }
+    
+    .calculator-box h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-group {
+        padding: 1.5rem;
+    }
+    
+    .section-group h3 {
+        font-size: 1.3rem;
+    }
+    
+    .calculate-btn {
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+    
+    .total-cost {
+        font-size: 1.2rem;
+    }
+}
+
+/* Compact view for landscape mode on small devices */
+.compact-view .section-group {
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.compact-view .section-group h3 {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+}
+
+.compact-view .input-group {
+    margin-bottom: 0.6rem;
+}
+
+.compact-view .input-group label {
+    margin-bottom: 0.3rem;
+}
+
+.compact-view .input-group select,
+.compact-view .input-group input {
+    padding: 0.5rem;
+}
+
+.compact-view .calculate-btn {
+    padding: 0.7rem;
+}
+
+.compact-view .results {
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.compact-view .results h3 {
+    margin-bottom: 0.8rem;
+}
+
+.compact-view .cost-grid {
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.compact-view .cost-item {
+    padding: 0.5rem 0.8rem;
+}
+
+.compact-view .total-cost {
+    padding: 0.8rem;
+}
+
+/* Fix for iOS and Safari inputs */
+@supports (-webkit-overflow-scrolling: touch) {
+    .input-group input[type="number"] {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+    
+    .input-group select {
+        font-size: 16px;
     }
 } 
