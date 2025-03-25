@@ -1,52 +1,107 @@
-.calculator-container {
+.header-minimal {
+    z-index: 10;
+    text-align: center;
+    color: #FFF;
+    padding: 30px 0;
+    position: relative;
+}
+
+.header-minimal h1 {
+    margin: 0;
+}
+
+.header-minimal .site-title {
+    font-size: 42px;
+    display: block;
+    line-height: 1.1;
+    color: #FFF;
+}
+
+.header-minimal .site-description {
+    font-size: 24px;
+    display: block;
+    line-height: 1.1;
+    color: #FFF;
+    margin-top: 10px;
+}
+
+.header-minimal .header-icons {
+    margin-top: 20px;
+}
+
+.header-minimal .icon {
+    text-align: center;
+    color: #FFF;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    border: 2px solid #FFF;
+    transition: all .3s ease;
+}
+
+.header-minimal .icon:hover {
+    color: #24292e;
+    background: #FFF;
+}
+
+.calculator-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+    min-height: calc(100vh - 200px);
+    padding: 40px 20px;
+    z-index: 5;
     position: relative;
-    z-index: 10;
 }
 
 .calculator-box {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.9);
     padding: 2.5rem;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 650px;
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeIn 1s ease-out;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
 }
 
 .calculator-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .calculator-box h2 {
     text-align: center;
-    color: #2c3e50;
+    color: #212529;
     margin-bottom: 2rem;
     font-size: 2rem;
     font-weight: 700;
 }
 
 .section-group {
-    background: #f8f9fa;
+    background: rgba(248, 249, 250, 0.8);
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    transition: transform 0.2s;
+    transition: all 0.2s;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .section-group:hover {
     transform: translateY(-3px);
+    background: rgba(248, 249, 250, 0.95);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .section-group h3 {
-    color: #2c3e50;
+    color: #212529;
     margin-bottom: 1rem;
     font-size: 1.3rem;
     display: flex;
@@ -72,11 +127,13 @@
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.2s;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .input-group select:hover, 
 .input-group input:hover {
     border-color: #adb5bd;
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .input-group select:focus, 
@@ -84,6 +141,7 @@
     border-color: #4dabf7;
     outline: none;
     box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.25);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 /* Keyboard focus indicator */
@@ -163,13 +221,18 @@
 .results {
     margin-top: 2rem;
     padding: 1.8rem;
-    background: #f8f9fa;
+    background: rgba(248, 249, 250, 0.8);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.results:hover {
+    background: rgba(248, 249, 250, 0.95);
 }
 
 .results h3 {
-    color: #2c3e50;
+    color: #212529;
     margin-bottom: 1.2rem;
     text-align: center;
 }
@@ -185,7 +248,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.8rem 1rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     transition: transform 0.2s;
@@ -193,6 +256,7 @@
 
 .cost-item:hover {
     transform: scale(1.02);
+    background: rgba(255, 255, 255, 1);
 }
 
 .cost-item label {
@@ -232,13 +296,6 @@
     100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Styling for secondary sections */
-.secondary-section {
-    padding: 3rem 0;
-    background: #f8f9fa;
-    border-top: 1px solid #e9ecef;
-}
-
 @media (max-width: 768px) {
     .calculator-box {
         padding: 1.5rem;
@@ -246,6 +303,14 @@
     
     .section-group {
         padding: 1.2rem;
+    }
+    
+    .header-minimal .site-title {
+        font-size: 32px;
+    }
+    
+    .header-minimal .site-description {
+        font-size: 18px;
     }
 }
 
@@ -265,4 +330,36 @@
     .calculator-box h2 {
         font-size: 1.6rem;
     }
+    
+    .header-minimal .site-title {
+        font-size: 28px;
+    }
+    
+    .header-minimal .site-description {
+        font-size: 16px;
+    }
+}
+
+.footer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer a {
+    color: #4dabf7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: white;
+    text-decoration: underline;
 } 
