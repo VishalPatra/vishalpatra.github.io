@@ -2,121 +2,12 @@
 <html lang="en">
   {% include head.html %}
   <body>
+      {% include header.html %}
       <div id="particles-js">
-        <div class="header">
-          <h1>
-            <span class="site-title">{{site.username}}</span>
-            <span class="site-description">{{site.user_title}}</span>
-          </h1>
-          <div class="header-icons">
-            <a aria-label="GitHub" target="_blank" href="https://github.com/{{site.github_username}}"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
-          </div>
-        </div>
         <div class="calculator-wrapper container-fluid">
           <div class="row justify-content-center align-items-start">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-              <div class="calculator-box">
-                <h2>3D Print Cost Estimator</h2>
-                <!-- Material Settings -->
-                <div class="section-group">
-                  <h3>Material Settings</h3>
-                  <div class="input-group">
-                    <label for="filamentType">Filament Type:</label>
-                    <select id="filamentType" onchange="updateDefaultValues()">
-                      <option value="pla">PLA</option>
-                      <option value="abs">ABS</option>
-                      <option value="petg">PETG</option>
-                      <option value="tpu">TPU</option>
-                      <option value="custom">Custom</option>
-                    </select>
-                  </div>
-                  <div class="input-group">
-                    <label for="filamentCost">Filament Cost (per kg):</label>
-                    <div class="input-with-unit">
-                      <input type="number" id="filamentCost" value="20" step="0.01">
-                      <span class="unit">$/kg</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <label for="printWeight">Estimated Print Weight (g):</label>
-                    <div class="input-with-unit">
-                      <input type="number" id="printWeight" value="100" step="0.1">
-                      <span class="unit">g</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Time & Power Settings -->
-                <div class="section-group">
-                  <h3>Time & Power Settings</h3>
-                  <div class="input-group">
-                    <label for="printTime">Estimated Print Time:</label>
-                    <div class="time-inputs">
-                      <input type="number" id="printHours" value="3" min="0" placeholder="Hours">
-                      <span>h</span>
-                      <input type="number" id="printMinutes" value="0" min="0" max="59" placeholder="Minutes">
-                      <span>m</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <label for="electricityCost">Electricity Cost:</label>
-                    <div class="input-with-unit">
-                      <input type="number" id="electricityCost" value="0.12" step="0.01">
-                      <span class="unit">$/kWh</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <label for="printerWattage">Printer Power Usage:</label>
-                    <div class="input-with-unit">
-                      <input type="number" id="printerWattage" value="150" step="1">
-                      <span class="unit">W</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Additional Costs -->
-                <div class="section-group">
-                  <h3>Additional Costs</h3>
-                  <div class="input-group">
-                    <label for="failureRate">Failure Rate:</label>
-                    <div class="input-with-unit">
-                      <input type="number" id="failureRate" value="10" min="0" max="100" step="1">
-                      <span class="unit">%</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <label for="laborCost">Labor Cost (per hour):</label>
-                    <div class="input-with-unit">
-                      <input type="number" id="laborCost" value="0" step="0.01">
-                      <span class="unit">$/h</span>
-                    </div>
-                  </div>
-                </div>
-                <button onclick="calculateCost()" class="calculate-btn">Calculate Cost</button>
-                <div class="results" id="results">
-                  <h3>Cost Breakdown</h3>
-                  <div class="cost-grid">
-                    <div class="cost-item">
-                      <label>Material:</label>
-                      <span id="materialCost">$0.00</span>
-                    </div>
-                    <div class="cost-item">
-                      <label>Electricity:</label>
-                      <span id="powerCost">$0.00</span>
-                    </div>
-                    <div class="cost-item">
-                      <label>Risk Cost:</label>
-                      <span id="riskCost">$0.00</span>
-                    </div>
-                    <div class="cost-item">
-                      <label>Labor:</label>
-                      <span id="laborCostResult">$0.00</span>
-                    </div>
-                  </div>
-                  <div class="total-cost">
-                    <label>Total Cost:</label>
-                    <span id="totalCost">$0.00</span>
-                  </div>
-                </div>
-              </div>
+            <div class="col-12">
+              {{ content }}
             </div>
           </div>
         </div>

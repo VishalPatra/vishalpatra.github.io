@@ -1,75 +1,59 @@
-# Particle Jekyll Theme
+# 3D Print Cost Calculator
 
-![](./particle.jpg)
+A simple, responsive web-based calculator for estimating the cost of 3D printing projects. This tool helps makers and 3D printing enthusiasts calculate the total cost of a print job by considering material costs, electricity usage, failure rates, and labor costs.
 
-This is a simple and minimalist template for Jekyll designed for developers that want to show of their portfolio.
+![3D Print Cost Calculator](./particle.jpg)
 
-The Theme features:
+## Features
 
-- Gulp
-- SASS
-- Sweet Scroll
+- **Material Cost Calculation**: Calculate the cost of filament based on weight and price per kg
+- **Electricity Cost Calculation**: Factor in power consumption and electricity rates
+- **Risk Assessment**: Include potential failure rates in cost estimation
+- **Labor Costs**: Add optional labor costs based on print time
+- **Responsive Design**: Works on mobile, tablet, and desktop devices
+- **Particle.js Background**: Beautiful animated particle background
+- **Preset Filament Types**: Quick selection of common filament types (PLA, ABS, PETG, TPU)
+
+## Technologies Used
+
+- Jekyll
+- HTML5/CSS3
+- JavaScript
+- Bootstrap 5
 - Particle.js
-- BrowserSync
-- Font Awesome and Devicon icons
-- Google Analytics
-- Info Customization
+- SASS
 
-## Basic Setup
+## Setup and Installation
 
-1. [Install Jekyll](http://jekyllrb.com)
-2. Clone the particle theme: `git clone https://github.com/nrandecker/particle.git`
-3. Edit `_config.yml` to personalize your site.
+### Local Development
 
-## Site and User Settings
+1. Install [Ruby](https://www.ruby-lang.org/en/downloads/) and [Jekyll](https://jekyllrb.com/docs/installation/)
+2. Clone this repository
+3. Navigate to the project directory in your terminal
+4. Run `bundle install` to install Ruby dependencies
+5. Run `npm install` or `yarn` to install Node.js dependencies
+6. Run `gulp` to compile assets and start a local server
+7. Visit `http://localhost:3000` in your browser
 
-You have to fill some informations on `_config.yml` to customize your site.
+### Deployment
 
-```
-# Site settings
-description: A blog about lorem ipsum dolor sit amet
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://localhost:3000" # the base hostname & protocol for your site
+This site is designed to be hosted on GitHub Pages:
 
-# User settings
-username: Lorem Ipsum
-user_description: Anon Developer at Lorem Ipsum Dolor
-user_title: Anon Developer
-email: anon@anon.com
-twitter_username: lorem_ipsum
-github_username:  lorem_ipsum
-gplus_username:  lorem_ipsum
-```
+1. Fork this repository
+2. Update the `_config.yml` file with your information
+3. Push to your GitHub repository
+4. Enable GitHub Pages in your repository settings
 
-**Don't forget to change your url before you deploy your site!**
+## Customization
 
-## Color and Particle Customization
-- Color Customization
-  - Edit the sass variables
-- Particle Customization
-  - Edit the json data in particle function in app.js
-  - Refer to [Particle.js](https://github.com/VincentGarreau/particles.js/) for help
-
-## Running the blog in local
-
-In order to compile the assets and run Jekyll on local you need to follow those steps:
-
-- Install [NodeJS](https://nodejs.org/)
-- Install [Jekyll](https://jekyllrb.com): `sudo gem install bundler jekyll`
-- Install [Yarn](https://yarnpkg.com/): `npm install -g yarn`
-- Install dependencies: `yarn`
-- Run: `gulp`
-
-## Questions
-
-Having any issues file a [GitHub Issue](https://github.com/nrandecker/particle/issues/new).
+- Edit `_config.yml` to update site metadata
+- Modify CSS in `assets/css/calculator.css` for styling changes
+- Update calculator logic in `assets/js/calculator.js`
 
 ## License
 
-This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme anyway you want.
+This project is licensed under the MIT License - see the LICENSE.txt file for details.
 
-## Credits
+## Author
 
-This theme was partially designed with the inspiration from these fine folks
-- [Willian Justen](https://github.com/willianjusten/will-jekyll-template)
-- [Vincent Garreau](https://github.com/VincentGarreau/particles.js/)
+Built with ❤️ by Vishal Patra

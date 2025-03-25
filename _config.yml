@@ -5,9 +5,9 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://vishalpatra.github.io" # the base hostname & protocol for your site
 
 # User settings
-username: 3D Print Cost Calculator
-user_description: Get instant cost estimates for your 3D printing projects
-user_title: Calculate Your Printing Costs
+username: Vishal Patra
+user_description: A simple, responsive calculator for estimating 3D printing costs
+user_title: 3D Print Cost Calculator
 email: your-email@domain.com
 github_username: vishalpatra
 

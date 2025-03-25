@@ -71,6 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => this.classList.remove('clicked'), 200);
     });
     
+    // Add click event for "Reset" button
+    document.querySelector('.reset-btn').addEventListener('click', function() {
+        resetForm();
+        
+        // Add haptic feedback for mobile devices if available
+        if (navigator.vibrate && window.innerWidth < 768) {
+            navigator.vibrate(15);
+        }
+        
+        // Add a visual feedback animation to the button
+        this.classList.add('clicked');
+        setTimeout(() => this.classList.remove('clicked'), 200);
+    });
+    
     // Handle orientation changes
     window.addEventListener('orientationchange', () => {
         setTimeout(updateLayout, 300);
@@ -103,6 +117,31 @@ function updateDefaultValues() {
         document.getElementById('filamentCost').value = defaults.cost;
         document.getElementById('printerWattage').value = defaults.wattage;
     }
+}
+
+function resetForm() {
+    // Reset to default filament type
+    document.getElementById('filamentType').value = 'pla';
+    
+    // Reset all input fields to default values
+    document.getElementById('filamentCost').value = filamentDefaults.pla.cost;
+    document.getElementById('printWeight').value = 100;
+    document.getElementById('printHours').value = 3;
+    document.getElementById('printMinutes').value = 0;
+    document.getElementById('electricityCost').value = 0.12;
+    document.getElementById('printerWattage').value = filamentDefaults.pla.wattage;
+    document.getElementById('failureRate').value = 10;
+    document.getElementById('laborCost').value = 0;
+    
+    // Reset result displays
+    document.getElementById('materialCost').textContent = '$0.00';
+    document.getElementById('powerCost').textContent = '$0.00';
+    document.getElementById('riskCost').textContent = '$0.00';
+    document.getElementById('laborCostResult').textContent = '$0.00';
+    document.getElementById('totalCost').textContent = '$0.00';
+    
+    // Focus on the first input field
+    document.getElementById('filamentType').focus();
 }
 
 function calculateCost() {
