@@ -1,13 +1,13 @@
 # Site settings
 title: 3D Print Cost Calculator
-description: A simple and efficient calculator for estimating 3D printing costs
+description: A simple, accurate tool for estimating 3D printing costs including material, electricity, and labor
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://vishalpatra.github.io" # the base hostname & protocol for your site
 
 # User settings
 username: 3D Print Calculator
-user_description: Calculate accurate costs for your 3D printing projects including material, electricity, and labor costs.
-user_title: 3D Print Cost Estimator
+user_description: Quickly calculate the true cost of your 3D prints by factoring in material costs, electricity consumption, print time, and more.
+user_title: Estimate Your Printing Costs
 email: your-email@domain.com
 github_username: vishalpatra
 

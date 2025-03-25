@@ -3,13 +3,13 @@
   {% include head.html %}
   <body>
       {% include header.html %}
-      <section id="about">
+      {{ content }}
+      <section id="about" class="secondary-section">
         {% include about.html %}
       </section>
-      <section id="projects">
+      <section id="projects" class="secondary-section">
         {% include projects.html %}
       </section>
-        {{ content }}
       {% include footer.html %}
       
       <script src="{{ "/assets/js/calculator.js" | prepend: site.baseurl }}"></script>

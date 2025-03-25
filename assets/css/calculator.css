@@ -4,40 +4,57 @@
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    background-color: #f5f7fa;
+    background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+    position: relative;
+    z-index: 10;
 }
 
 .calculator-box {
     background: rgba(255, 255, 255, 0.98);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1s ease-out;
+}
+
+.calculator-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .calculator-box h2 {
     text-align: center;
     color: #2c3e50;
     margin-bottom: 2rem;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .section-group {
     background: #f8f9fa;
     padding: 1.5rem;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.section-group:hover {
+    transform: translateY(-3px);
 }
 
 .section-group h3 {
     color: #2c3e50;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
 }
 
 .input-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 .input-group label {
@@ -54,13 +71,26 @@
     border: 2px solid #e9ecef;
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    transition: all 0.2s;
+}
+
+.input-group select:hover, 
+.input-group input:hover {
+    border-color: #adb5bd;
 }
 
 .input-group select:focus, 
 .input-group input:focus {
     border-color: #4dabf7;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.25);
+}
+
+/* Keyboard focus indicator */
+.input-group input:focus-visible,
+.input-group select:focus-visible {
+    border-color: #228be6;
+    box-shadow: 0 0 0 4px rgba(34, 139, 230, 0.3);
 }
 
 .input-with-unit {
@@ -96,81 +126,127 @@
 
 .calculate-btn {
     width: 100%;
-    padding: 1rem;
-    background: #228be6;
+    padding: 1.1rem;
+    background: linear-gradient(to right, #228be6, #4dabf7);
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s, transform 0.1s;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(34, 139, 230, 0.3);
 }
 
 .calculate-btn:hover {
-    background: #1c7ed6;
+    background: linear-gradient(to right, #1c7ed6, #339af0);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(34, 139, 230, 0.4);
 }
 
 .calculate-btn:active {
-    transform: scale(0.98);
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(34, 139, 230, 0.4);
+}
+
+.calculate-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(34, 139, 230, 0.4);
+}
+
+.calculate-btn.clicked {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(34, 139, 230, 0.4);
+    background: linear-gradient(to right, #1971c2, #339af0);
 }
 
 .results {
     margin-top: 2rem;
-    padding: 1.5rem;
+    padding: 1.8rem;
     background: #f8f9fa;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .results h3 {
     color: #2c3e50;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
 }
 
 .cost-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
 }
 
 .cost-item {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem;
+    padding: 0.8rem 1rem;
     background: white;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.cost-item:hover {
+    transform: scale(1.02);
 }
 
 .cost-item label {
     color: #495057;
+    font-weight: 500;
 }
 
 .cost-item span {
     color: #228be6;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .total-cost {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
-    background: #228be6;
+    padding: 1.2rem;
+    background: linear-gradient(to right, #228be6, #4dabf7);
     color: white;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: 600;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(34, 139, 230, 0.25);
 }
 
 .update-animation {
-    animation: highlight 0.3s ease-out;
+    animation: highlight 0.4s ease-out;
 }
 
 @keyframes highlight {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Styling for secondary sections */
+.secondary-section {
+    padding: 3rem 0;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .calculator-box {
+        padding: 1.5rem;
+    }
+    
+    .section-group {
+        padding: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -184,5 +260,9 @@
 
     .cost-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .calculator-box h2 {
+        font-size: 1.6rem;
     }
 } 
