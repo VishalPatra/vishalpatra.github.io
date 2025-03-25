@@ -1,60 +1,67 @@
-.header-minimal {
+.header {
     z-index: 10;
     text-align: center;
     color: #FFF;
-    padding: 30px 0;
-    position: relative;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
-.header-minimal h1 {
+.header h1 {
     margin: 0;
 }
 
-.header-minimal .site-title {
-    font-size: 42px;
+.header .site-title {
+    font-size: 50px;
     display: block;
     line-height: 1.1;
     color: #FFF;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.header-minimal .site-description {
-    font-size: 24px;
+.header .site-description {
+    font-size: 28px;
     display: block;
     line-height: 1.1;
     color: #FFF;
     margin-top: 10px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.header-minimal .header-icons {
+.header .header-icons {
     margin-top: 20px;
 }
 
-.header-minimal .icon {
+.header .icon {
     text-align: center;
     color: #FFF;
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
     padding: 10px;
     margin: 5px;
     border-radius: 50%;
     border: 2px solid #FFF;
     transition: all .3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.header-minimal .icon:hover {
+.header .icon:hover {
     color: #24292e;
     background: #FFF;
+    transform: scale(1.1);
 }
 
 .calculator-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 200px);
-    padding: 40px 20px;
-    z-index: 5;
+    min-height: 100vh;
+    padding: 150px 20px 40px;
     position: relative;
+    z-index: 5;
 }
 
 .calculator-box {
@@ -65,10 +72,12 @@
     width: 100%;
     max-width: 650px;
     transition: transform 0.3s, box-shadow 0.3s;
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 1.2s ease-out;
     margin: 0 auto;
     position: relative;
     z-index: 10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .calculator-box:hover {
@@ -92,6 +101,8 @@
     margin-bottom: 1.5rem;
     transition: all 0.2s;
     border: 1px solid rgba(0,0,0,0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .section-group:hover {
@@ -225,6 +236,8 @@
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0,0,0,0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .results:hover {
@@ -296,50 +309,6 @@
     100% { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 768px) {
-    .calculator-box {
-        padding: 1.5rem;
-    }
-    
-    .section-group {
-        padding: 1.2rem;
-    }
-    
-    .header-minimal .site-title {
-        font-size: 32px;
-    }
-    
-    .header-minimal .site-description {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    .calculator-box {
-        padding: 1rem;
-    }
-
-    .section-group {
-        padding: 1rem;
-    }
-
-    .cost-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .calculator-box h2 {
-        font-size: 1.6rem;
-    }
-    
-    .header-minimal .site-title {
-        font-size: 28px;
-    }
-    
-    .header-minimal .site-description {
-        font-size: 16px;
-    }
-}
-
 .footer {
     background: rgba(0, 0, 0, 0.7);
     padding: 20px 0;
@@ -362,4 +331,56 @@
 .footer a:hover {
     color: white;
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .header .site-title {
+        font-size: 38px;
+    }
+    
+    .header .site-description {
+        font-size: 22px;
+    }
+    
+    .calculator-box {
+        padding: 1.5rem;
+    }
+    
+    .section-group {
+        padding: 1.2rem;
+    }
+    
+    .calculator-wrapper {
+        padding-top: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .site-title {
+        font-size: 30px;
+    }
+    
+    .header .site-description {
+        font-size: 18px;
+    }
+    
+    .calculator-box {
+        padding: 1rem;
+    }
+
+    .section-group {
+        padding: 1rem;
+    }
+
+    .cost-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .calculator-box h2 {
+        font-size: 1.6rem;
+    }
+    
+    .calculator-wrapper {
+        padding-top: 100px;
+    }
 } 
