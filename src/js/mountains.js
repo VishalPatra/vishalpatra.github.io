@@ -8,6 +8,7 @@ export const mountains = [
         firstAscent: "1953",
         firstAscentTeam: "Edmund Hillary, Tenzing Norgay",
         description: "The highest mountain on Earth, known as Sagarmatha in Nepal and Chomolungma in Tibet.",
+        range: "Mahalangur Himalaya",
         image: "assets/img/mountains/everest.jpg"
     },
     {
@@ -19,6 +20,7 @@ export const mountains = [
         firstAscent: "1954",
         firstAscentTeam: "Achille Compagnoni, Lino Lacedelli",
         description: "Known as the Savage Mountain due to its extreme difficulty of ascent.",
+        range: "Karakoram",
         image: "assets/img/mountains/k2.jpg"
     },
     {
@@ -30,6 +32,7 @@ export const mountains = [
         firstAscent: "1955",
         firstAscentTeam: "Joe Brown, George Band",
         description: "The third highest mountain in the world and the most easterly of the 8000m peaks.",
+        range: "Kangchenjunga Himalaya",
         image: "assets/img/mountains/kangchenjunga.jpg"
     }
     // Add more mountains...

@@ -333,43 +333,53 @@ footer {
 
 // Visualization Section
 .visualization-section {
-    height: 100vh;
-    padding: 0;
-    position: relative;
+    padding-top: 60px; // Account for fixed header
 
     .viz-container {
         display: grid;
         grid-template-columns: 1fr 300px;
-        height: 100%;
+        height: calc(100vh - 60px);
         
         @media (max-width: 768px) {
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 300px;
         }
     }
-}
 
-#mountain-viz {
-    width: 100%;
-    height: 100%;
-    background: rgba($dark-bg, 0.5);
-    backdrop-filter: blur(5px);
+    #mountain-viz {
+        background: #1a1a1a;
+        overflow: hidden;
 
-    svg {
-        width: 100%;
-        height: 100%;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
 
-        .mountain {
-            transition: $transition;
-            opacity: 0.9;
+    .mountain-info {
+        background: rgba($dark-bg, 0.95);
+        padding: 20px;
+        overflow-y: auto;
 
-            &:hover {
-                opacity: 1;
+        h3 {
+            color: $primary-color;
+            margin: 0 0 15px;
+        }
+
+        .mountain-details {
+            .details {
+                p {
+                    margin: 8px 0;
+                    line-height: 1.4;
+                }
             }
         }
 
-        .axis {
-            color: $light-text;
+        .description {
+            margin-top: 20px;
+            line-height: 1.6;
+            font-style: italic;
+            opacity: 0.9;
         }
     }
 }
