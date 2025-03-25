@@ -8,7 +8,7 @@ const filamentDefaults = {
 };
 
 // Initialize the calculator
-document.addEventListener('DOMContentLoaded', () => {
+function initCalculator() {
     // Set up event listeners for all input fields to auto-calculate on change
     const allInputs = document.querySelectorAll('input, select');
     allInputs.forEach(input => {
@@ -55,41 +55,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Set up the filament type selector
-    document.getElementById('filamentType').addEventListener('change', updateDefaultValues);
+    const filamentTypeSelect = document.getElementById('filamentType');
+    if (filamentTypeSelect) {
+        filamentTypeSelect.addEventListener('change', updateDefaultValues);
+    }
     
     // Add click event for "Calculate" button
-    document.querySelector('.calculate-btn').addEventListener('click', function() {
-        calculateCost();
-        
-        // Add haptic feedback for mobile devices if available
-        if (navigator.vibrate && window.innerWidth < 768) {
-            navigator.vibrate(15);
-        }
-        
-        // Add a visual feedback animation to the button
-        this.classList.add('clicked');
-        setTimeout(() => this.classList.remove('clicked'), 200);
-        
-        // Show a ripple effect on the button
-        createRipple(this, event);
-    });
+    const calculateBtn = document.querySelector('.calculate-btn');
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', function(event) {
+            calculateCost();
+            
+            // Add haptic feedback for mobile devices if available
+            if (navigator.vibrate && window.innerWidth < 768) {
+                navigator.vibrate(15);
+            }
+            
+            // Add a visual feedback animation to the button
+            this.classList.add('clicked');
+            setTimeout(() => this.classList.remove('clicked'), 200);
+            
+            // Show a ripple effect on the button
+            createRipple(this, event);
+        });
+    }
     
     // Add click event for "Reset" button
-    document.querySelector('.reset-btn').addEventListener('click', function() {
-        resetForm();
-        
-        // Add haptic feedback for mobile devices if available
-        if (navigator.vibrate && window.innerWidth < 768) {
-            navigator.vibrate(15);
-        }
-        
-        // Add a visual feedback animation to the button
-        this.classList.add('clicked');
-        setTimeout(() => this.classList.remove('clicked'), 200);
-        
-        // Show a ripple effect on the button
-        createRipple(this, event);
-    });
+    const resetBtn = document.querySelector('.reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function(event) {
+            resetForm();
+            
+            // Add haptic feedback for mobile devices if available
+            if (navigator.vibrate && window.innerWidth < 768) {
+                navigator.vibrate(15);
+            }
+            
+            // Add a visual feedback animation to the button
+            this.classList.add('clicked');
+            setTimeout(() => this.classList.remove('clicked'), 200);
+            
+            // Show a ripple effect on the button
+            createRipple(this, event);
+        });
+    }
     
     // Handle orientation changes
     window.addEventListener('orientationchange', () => {
@@ -100,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDefaultValues();
     calculateCost();
     updateLayout();
-});
+}
 
 // Create a ripple effect for buttons
 function createRipple(button, e) {
@@ -150,53 +159,76 @@ function updateLayout() {
 }
 
 function updateDefaultValues() {
-    const filamentType = document.getElementById('filamentType').value;
-    const defaults = filamentDefaults[filamentType];
+    const filamentType = document.getElementById('filamentType');
+    if (!filamentType) return;
     
-    if (filamentType !== 'custom') {
-        document.getElementById('filamentCost').value = defaults.cost;
-        document.getElementById('printerWattage').value = defaults.wattage;
+    const defaults = filamentDefaults[filamentType.value];
+    
+    if (filamentType.value !== 'custom') {
+        const filamentCostInput = document.getElementById('filamentCost');
+        const printerWattageInput = document.getElementById('printerWattage');
+        
+        if (filamentCostInput) filamentCostInput.value = defaults.cost;
+        if (printerWattageInput) printerWattageInput.value = defaults.wattage;
     }
 }
 
 function resetForm() {
     // Reset to default filament type
-    document.getElementById('filamentType').value = 'pla';
+    const filamentType = document.getElementById('filamentType');
+    if (filamentType) filamentType.value = 'pla';
     
     // Reset all input fields to default values
-    document.getElementById('filamentCost').value = filamentDefaults.pla.cost;
-    document.getElementById('printWeight').value = 100;
-    document.getElementById('printHours').value = 3;
-    document.getElementById('printMinutes').value = 0;
-    document.getElementById('electricityCost').value = 0.12;
-    document.getElementById('printerWattage').value = filamentDefaults.pla.wattage;
-    document.getElementById('failureRate').value = 10;
-    document.getElementById('laborCost').value = 0;
+    const inputs = {
+        'filamentCost': filamentDefaults.pla.cost,
+        'printWeight': 100,
+        'printHours': 3,
+        'printMinutes': 0,
+        'electricityCost': 0.12,
+        'printerWattage': filamentDefaults.pla.wattage,
+        'failureRate': 10,
+        'laborCost': 0
+    };
+    
+    // Set each input value if element exists
+    Object.entries(inputs).forEach(([id, value]) => {
+        const input = document.getElementById(id);
+        if (input) input.value = value;
+    });
     
     // Reset result displays with fade effect
     const resultElements = ['materialCost', 'powerCost', 'riskCost', 'laborCostResult', 'totalCost'];
     resultElements.forEach(id => {
         const element = document.getElementById(id);
-        element.classList.add('update-animation');
-        element.textContent = '$0.00';
-        setTimeout(() => element.classList.remove('update-animation'), 400);
+        if (element) {
+            element.classList.add('update-animation');
+            element.textContent = '$0.00';
+            setTimeout(() => {
+                if (element) element.classList.remove('update-animation');
+            }, 400);
+        }
     });
     
     // Focus on the first input field
-    document.getElementById('filamentType').focus();
+    if (filamentType) filamentType.focus();
 }
 
 function calculateCost() {
     try {
         // Get input values and handle potential empty values
-        const filamentCost = parseFloat(document.getElementById('filamentCost').value) || 0;
-        const printWeight = parseFloat(document.getElementById('printWeight').value) || 0;
-        const printHours = parseFloat(document.getElementById('printHours').value) || 0;
-        const printMinutes = parseFloat(document.getElementById('printMinutes').value) || 0;
-        const electricityCost = parseFloat(document.getElementById('electricityCost').value) || 0;
-        const printerWattage = parseFloat(document.getElementById('printerWattage').value) || 0;
-        const failureRate = parseFloat(document.getElementById('failureRate').value) || 0;
-        const laborCost = parseFloat(document.getElementById('laborCost').value) || 0;
+        const getValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? (parseFloat(element.value) || 0) : 0;
+        };
+        
+        const filamentCost = getValue('filamentCost');
+        const printWeight = getValue('printWeight');
+        const printHours = getValue('printHours');
+        const printMinutes = getValue('printMinutes');
+        const electricityCost = getValue('electricityCost');
+        const printerWattage = getValue('printerWattage');
+        const failureRate = getValue('failureRate');
+        const laborCost = getValue('laborCost');
 
         // Calculate total print time in hours
         const printTime = printHours + (printMinutes / 60);
@@ -220,14 +252,16 @@ function calculateCost() {
         // Only on small screens and only if calculation was triggered by button
         if (window.innerWidth < 768 && document.activeElement === document.querySelector('.calculate-btn')) {
             const resultsElement = document.getElementById('results');
-            const rect = resultsElement.getBoundingClientRect();
-            
-            if (rect.bottom > window.innerHeight) {
-                resultsElement.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest',
-                    inline: 'nearest'
-                });
+            if (resultsElement) {
+                const rect = resultsElement.getBoundingClientRect();
+                
+                if (rect.bottom > window.innerHeight) {
+                    resultsElement.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest',
+                        inline: 'nearest'
+                    });
+                }
             }
         }
     } catch (error) {
@@ -237,6 +271,8 @@ function calculateCost() {
 
 function updateCostDisplay(elementId, value) {
     const element = document.getElementById(elementId);
+    if (!element) return;
+    
     // Format with 2 decimal places and include dollar sign
     const formattedValue = `$${formatNumber(value)}`;
     
@@ -248,7 +284,7 @@ function updateCostDisplay(elementId, value) {
         
         // Remove animation class after animation completes
         setTimeout(() => {
-            element.classList.remove('update-animation');
+            if (element) element.classList.remove('update-animation');
         }, 400);
     }
 }

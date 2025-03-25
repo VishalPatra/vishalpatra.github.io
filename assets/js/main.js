@@ -1,15 +1,38 @@
-document.addEventListener("DOMContentLoaded", function() {
+"use strict";
+
+// Wait for all content to load before initializing
+window.addEventListener("load", function() {
+  // Initialize particles with default config
+  initParticles();
+  
+  // Set up dark mode toggle
+  initThemeToggle();
+  
+  // Set up disco mode toggle
+  initDiscoMode();
+  
+  // Set up floating reset button for mobile
+  initFloatingReset();
+  
+  // Initialize the calculator when DOM is ready
+  if (typeof initCalculator === 'function') {
+    initCalculator();
+  }
+});
+
+// Initialize particles.js with optimized settings
+function initParticles(customColor) {
   particlesJS('particles-js', {
     "particles": {
       "number": {
-        "value": 80,
+        "value": 60, // Reduced for better performance
         "density": {
           "enable": true,
           "value_area": 800
         }
       },
       "color": {
-        "value": "#4dabf7"
+        "value": customColor || "#4dabf7"
       },
       "shape": {
         "type": "circle",
@@ -22,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       },
       "opacity": {
-        "value": 0.7,
+        "value": 0.6,
         "random": false,
         "anim": {
           "enable": false,
@@ -44,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
       "line_linked": {
         "enable": true,
         "distance": 150,
-        "color": "#4dabf7",
+        "color": customColor || "#4dabf7",
         "opacity": 0.5,
         "width": 1
       },
@@ -104,9 +127,13 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     "retina_detect": true
   });
+}
 
-  // Set up dark mode toggle
+// Initialize theme toggle functionality
+function initThemeToggle() {
   const themeToggle = document.getElementById('themeToggle');
+  if (!themeToggle) return;
+  
   const themeIcon = themeToggle.querySelector('i');
   const body = document.body;
   
@@ -136,43 +163,144 @@ document.addEventListener("DOMContentLoaded", function() {
       updateParticlesColor('#4dabf7');
     }
   });
+}
+
+// Initialize disco mode functionality
+function initDiscoMode() {
+  const discoToggle = document.getElementById('discoToggle');
+  if (!discoToggle) return;
   
-  // Add click event to change particle colors randomly
+  const discoIcon = discoToggle.querySelector('i');
+  const body = document.body;
   const particlesContainer = document.getElementById('particles-js');
-  particlesContainer.addEventListener('click', (e) => {
-    // Only if it's not coming from a form control
-    if (!e.target.closest('input, button, select')) {
-      const colors = ['#4dabf7', '#74c0fc', '#a5d8ff', '#228be6', '#1971c2', '#fd7e14', '#f76707', '#e8590c', '#fd7e14', '#40c057', '#2b8a3e', '#82c91e', '#66a80f'];
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      updateParticlesColor(randomColor);
+  
+  // Check for saved user preference
+  const savedDiscoMode = localStorage.getItem('discoMode');
+  if (savedDiscoMode === 'active') {
+    activateDiscoMode();
+  }
+  
+  // Toggle disco mode when button is clicked
+  discoToggle.addEventListener('click', () => {
+    if (body.classList.contains('disco-mode')) {
+      // Turn off disco mode
+      body.classList.remove('disco-mode');
+      discoToggle.classList.remove('active');
+      discoIcon.classList.remove('fa-compact-disc');
+      discoIcon.classList.add('fa-music');
+      localStorage.setItem('discoMode', 'inactive');
+      
+      // Reset particles to default
+      const currentColor = body.classList.contains('dark-mode') ? '#74c0fc' : '#4dabf7';
+      updateParticlesColor(currentColor);
+      
+      // Stop any active color interval
+      if (window.discoInterval) {
+        clearInterval(window.discoInterval);
+        window.discoInterval = null;
+      }
+    } else {
+      activateDiscoMode();
     }
   });
   
-  function updateParticlesColor(color) {
-    if (window.pJSDom && window.pJSDom[0]) {
-      const particles = window.pJSDom[0].pJS.particles;
-      
-      // Update particles color
-      particles.array.forEach(p => {
-        p.color.value = color;
-        p.color.rgb = hexToRgb(color);
-      });
-      
-      // Update line linked color
-      particles.line_linked.color = color;
-      particles.line_linked.color_rgb_line = hexToRgb(color);
-    }
+  // Also let users click on particles canvas to change colors in both modes
+  if (particlesContainer) {
+    particlesContainer.addEventListener('click', (e) => {
+      // Only if it's not coming from a form control
+      if (!e.target.closest('input, button, select, .calculator-box')) {
+        const colors = ['#4dabf7', '#74c0fc', '#a5d8ff', '#1971c2', '#1864ab', '#fd7e14', '#f76707', '#e8590c', '#ff922b', '#40c057', '#2b8a3e', '#82c91e', '#66a80f', '#be4bdb', '#ae3ec9', '#9c36b5'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        updateParticlesColor(randomColor);
+      }
+    });
   }
   
-  function hexToRgb(hex) {
-    // Remove the '#' if present
-    hex = hex.replace('#', '');
+  function activateDiscoMode() {
+    // Turn on disco mode
+    body.classList.add('disco-mode');
+    discoToggle.classList.add('active');
+    discoIcon.classList.remove('fa-music');
+    discoIcon.classList.add('fa-compact-disc');
+    localStorage.setItem('discoMode', 'active');
     
-    // Parse the hex values
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    
-    return { r, g, b };
+    // Start color changing interval if not already running
+    if (!window.discoInterval) {
+      window.discoInterval = setInterval(() => {
+        const colors = ['#4dabf7', '#74c0fc', '#a5d8ff', '#1971c2', '#1864ab', '#fd7e14', '#f76707', '#e8590c', '#ff922b', '#40c057', '#2b8a3e', '#82c91e', '#66a80f', '#be4bdb', '#ae3ec9', '#9c36b5'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        updateParticlesColor(randomColor);
+      }, 3000);
+    }
   }
-});
+}
+
+// Initialize floating reset button for mobile devices
+function initFloatingReset() {
+  const floatingReset = document.getElementById('floatingReset');
+  if (!floatingReset) return;
+  
+  // Only show on mobile devices
+  if (window.innerWidth < 768) {
+    // Show when user has scrolled a bit
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        floatingReset.classList.add('visible');
+      } else {
+        floatingReset.classList.remove('visible');
+      }
+    });
+    
+    // Handle click event
+    floatingReset.addEventListener('click', () => {
+      if (typeof resetForm === 'function') {
+        resetForm();
+        
+        // Add haptic feedback for mobile devices if available
+        if (navigator.vibrate) {
+          navigator.vibrate(15);
+        }
+        
+        // Add a visual feedback animation to the button
+        floatingReset.classList.add('clicked');
+        setTimeout(() => floatingReset.classList.remove('clicked'), 200);
+        
+        // Scroll to top
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+}
+
+// Update particle colors
+function updateParticlesColor(color) {
+  if (window.pJSDom && window.pJSDom[0]) {
+    const particles = window.pJSDom[0].pJS.particles;
+    
+    // Update particles color
+    particles.array.forEach(p => {
+      p.color.value = color;
+      p.color.rgb = hexToRgb(color);
+    });
+    
+    // Update line linked color
+    particles.line_linked.color = color;
+    particles.line_linked.color_rgb_line = hexToRgb(color);
+  }
+}
+
+// Convert hex color to RGB
+function hexToRgb(hex) {
+  // Remove the '#' if present
+  hex = hex.replace('#', '');
+  
+  // Parse the hex values
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  
+  return { r, g, b };
+}
